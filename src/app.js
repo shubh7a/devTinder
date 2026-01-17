@@ -5,11 +5,11 @@ const express = require('express');
 
 app.use(
    "/users" , [
-      // only 1st will run at postman 
+      // only 2nd will run at postman 
       (req,res,next)=>{
          console.log(" handling 1st router handler ");
          res.send(" 1st router handler ");
-         
+         next();
       },
       (req,res,next)=>{
          console.log(" handling 2nd router handler ");
