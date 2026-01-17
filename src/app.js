@@ -5,16 +5,16 @@ const express = require('express');
 
 app.use(
    "/users" , [
-      // only 3rd will run at postman 
+      // nothing will be return at postman
       (req,res,next)=>{
-         console.log(" handling 1st router handler ");
-         res.send(" 1st router handler ");
-         next();
+         // console.log(" handling 1st router handler ");
+         // res.send(" 1st router handler ");
+         // next();
       },
       (req,res,next)=>{
          console.log(" handling 2nd router handler ");
          res.send(" 2nd router handler ");
-         next();
+         //next();
       },
       (req,res,next)=>{
          console.log(" handling 3rd router handler ");
