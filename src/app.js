@@ -1,7 +1,32 @@
 const express = require('express');
  const app = express();
+//logic of DB  call and error handling
+app.use("/",(err,req,res,next)=>{
+   if(err){
+      res.status(500).send("something went wrong");
+   }
+});
+//try catch
+// app.get("/getUserData",(req,res)=>{
+//    try{
+//       throw new Error("nkjfbds");
+//       res.send("user data sent");
+//    }
+//    catch(err){
+//       res.status(500).send("some error contact to team");
+//    }
+// });
+app.get("/getUserData",(req,res)=>{
+      throw new Error("nkjfbds");
+      res.send("user data sent");
+   
+});
 
-
+app.use("/",(err,req,res,next)=>{ // this is wildcard mmatch it should always witten to end and if2 para then (req,res) or 3 para then (req,res,next) or 4 para then (err,req,res,next)
+   if(err){
+      res.status(500).send("something went wrong");
+   }
+});
 const {adminAuth,userAuth}=require("./middlewares/auth.js");
 
  app.use("/admin",adminAuth);
