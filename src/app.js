@@ -5,16 +5,18 @@ const express = require('express');
 
 app.use(
    "/users" , [
-      // nothing will be return at postman
+      // 3rd router will be return at postman and also shows an errror interminal
       (req,res,next)=>{
-         // console.log(" handling 1st router handler ");
-         // res.send(" 1st router handler ");
-         // next();
+          console.log(" handling 1st router handler ");
+          next();
+          res.send(" 1st router handler ");
+         //  next();
       },
       (req,res,next)=>{
          console.log(" handling 2nd router handler ");
+         next();
          res.send(" 2nd router handler ");
-         //next();
+        
       },
       (req,res,next)=>{
          console.log(" handling 3rd router handler ");
@@ -24,9 +26,9 @@ app.use(
    ]
 )
 
- app.get("/hello",(req,res)=>{
-    res.send(" welcome to server ");
- });
+//  app.get("/hello",(req,res)=>{
+//     res.send(" welcome to server ");
+//  });
 //  app.get("/ab?c",(req,res)=>{
 //     res.send(" ? => jiske aage laga hota h wo expresion/letter optional hota ");
 //  });
