@@ -1,21 +1,25 @@
 const express = require('express');
  const app = express();
 
-// order of these route matters alot
-
-app.use(
+// order of these route matters alot also ROUTER HANDLERS == MIDLLEWARE
+ app.use("/",(req,res,next)=>{
+   console.log("fetching use");
+   // res.send(" welcome to server ");
+   next();
+ });
+app.get(
    "/users" , [
       // 3rd router will be return at postman and also shows an errror interminal
       (req,res,next)=>{
           console.log(" handling 1st router handler ");
           next();
-          res.send(" 1st router handler ");
+          //res.send(" 1st router handler ");
          //  next();
       },
       (req,res,next)=>{
          console.log(" handling 2nd router handler ");
          next();
-         res.send(" 2nd router handler ");
+        // res.send(" 2nd router handler ");
         
       },
       (req,res,next)=>{
@@ -25,6 +29,8 @@ app.use(
       },
    ]
 )
+
+
 
 //  app.get("/hello",(req,res)=>{
 //     res.send(" welcome to server ");
