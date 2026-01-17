@@ -3,6 +3,27 @@ const express = require('express');
 
 // order of these route matters alot
 
+app.use(
+   "/users" , [
+      // only 1st will run at postman 
+      (req,res,next)=>{
+         console.log(" handling 1st router handler ");
+         res.send(" 1st router handler ");
+         
+      },
+      (req,res,next)=>{
+         console.log(" handling 2nd router handler ");
+         res.send(" 2nd router handler ");
+         
+      },
+      (req,res,next)=>{
+         console.log(" handling 3rd router handler ");
+         res.send(" 3rd router handler ");
+         
+      },
+   ]
+)
+
  app.get("/hello",(req,res)=>{
     res.send(" welcome to server ");
  });
