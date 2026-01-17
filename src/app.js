@@ -31,10 +31,18 @@ app.get(
 )
 
 
+// REQ.QUERY
+ app.get("/hello",(req,res)=>{
+   console.log(req.query);
+    res.send(" welcome to server ");
+ });
 
-//  app.get("/hello",(req,res)=>{
-//     res.send(" welcome to server ");
-//  });
+//  REQ.PARAMS
+app.get("/test/:userId/:name/:password/",(req,res)=>{
+   console.log(req.params);
+    res.send(" welcome to new server ");
+ });
+
 //  app.get("/ab?c",(req,res)=>{
 //     res.send(" ? => jiske aage laga hota h wo expresion/letter optional hota ");
 //  });
