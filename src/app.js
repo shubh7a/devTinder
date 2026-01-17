@@ -1,9 +1,26 @@
 const express = require('express');
  const app = express();
 
+
+const {adminAuth,userAuth}=require("./middlewares/auth.js");
+
+ app.use("/admin",adminAuth);
+
+ app.get("/checkUser",userAuth,(req,res)=>{
+   res.send("checking user data");
+ });
+
+ app.get("/admin/getAllData",(req,res)=>{
+   res.send("All data Sent");
+ });
+
+ app.get("/admin/deleteAllData",(req,res)=>{
+   res.send("All data deleted");
+ });
+
 // order of these route matters alot also ROUTER HANDLERS == MIDLLEWARE
  app.use("/",(req,res,next)=>{
-   console.log("fetching use");
+   console.log("fetching user");
    // res.send(" welcome to server ");
    next();
  });
