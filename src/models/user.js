@@ -7,7 +7,7 @@
     lastName: {
         type: String,
     },
-    emaild:{
+    emailId:{
         type:String,
     },
     password:{
