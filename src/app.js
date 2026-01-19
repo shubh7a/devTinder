@@ -3,16 +3,12 @@ const connectDb=require("./config/database");
 
  const app = express();
  const User =require("./models/user");
-// creating a API to user data into database to create user
+// creating dynamic middleware to get re from postman to add it to database
+
+app.use(express.json());//it convert json data coming from postman to java scrpit object
 app.post("/signup", async (req,res)=>{
   
-   const user = new User({ 
-      firstName:"Shubham",
-      lastName:"Singh",
-      emaild:"shubh@gmail.com",
-    password:"Shubh@123",
-    age:23,
-    gender :"Male",});
+   const user = new User(req.body);
 
     try{
    await user.save();
